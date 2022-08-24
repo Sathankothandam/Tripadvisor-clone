@@ -1,0 +1,27 @@
+.Home_bg_img{
+    background-image: url('https://static.tacdn.com/img2/brand/home/homemar2022_dt_trans.webp');
+    height: 340px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+     display: flex;
+}
+.img_input{
+    height: 17%;
+    width: 70%;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    margin: auto;  
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.img_input input{
+    border: 0px;
+    width: 90%;
+}
+.img_input input:focus{
+    outline: none;
+}
