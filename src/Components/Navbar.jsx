@@ -1,7 +1,10 @@
+
 import React from 'react'
 import '../Styles/Navbar.css'
+import Darkmode from './Darkmode'
 
 const Navbar = () => {
+  // # opposite-beginner-5472
   return (
     <div>
         <div className='Navbar_main_container'>
@@ -22,6 +25,9 @@ const Navbar = () => {
                 </div>
                 <div>
                 <i class="fa-solid fa-cart-arrow-down"></i><h4>Baskets</h4>
+                </div>
+                <div>
+                  <Darkmode/>
                 </div>
             </div>
         </div>

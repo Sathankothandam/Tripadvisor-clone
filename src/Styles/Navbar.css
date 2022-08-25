@@ -17,23 +17,20 @@
     justify-content: space-between;
     align-items: center;
     /* border: 1px solid ; */
-    width: 40%;
+    width: 50%;
 }
 .Navbar_routes_div div{
     display: flex;
     gap: 8px;
     align-items: center;
-    border: 0.5px ;
+    /* border: 0.5px solid grey; */
     padding: 0px 15px;
-    border-radius: 30px;
+    /* border-radius: 15px; */
 }
-.Navbar_routes_div div:hover{
+/* .Navbar_routes_div div:hover{
  background-color: rgb(194, 193, 193);
-}
-/* .signin_div{
-    background-color: black;
-    color: white;
 } */
+
 .Navbar_routes_div i{
     font-size: 25px;
 }
