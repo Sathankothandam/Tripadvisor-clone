@@ -6,7 +6,7 @@ const Darkmode = () => {
   return (
     <div>
          <Button bgColor='white' border='1px solid rgb(226, 223, 223) ' onClick={toggleColorMode}>
-        {colorMode === 'light' ? <i class="fa-solid fa-moon"></i> : <i class="fa-solid fa-sun" style={{color:"#dd0285"}}></i>}
+        {colorMode === 'light' ? <i class="fa-solid fa-moon"></i> : <i class="fa-solid fa-sun" style={{color:"black"}}></i>}
        </Button>
     </div>
   )
