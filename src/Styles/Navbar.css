@@ -1,12 +1,15 @@
 .Navbar_main_container{
     display: flex;
-    border: 1px solid ;
+    border: 1px solid rgb(190, 189, 189) ;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 5px 30px;
+    padding: 15px 30px;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+    position: fixed;
 }
 .Navbar_logo_div img{
     width: 188px;
@@ -16,20 +19,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border: 1px solid ; */
     width: 50%;
 }
 .Navbar_routes_div div{
     display: flex;
     gap: 8px;
     align-items: center;
-    /* border: 0.5px solid grey; */
-    padding: 0px 15px;
-    /* border-radius: 15px; */
+    padding: 10px 15px;
+    border-radius: 15px;
 }
-/* .Navbar_routes_div div:hover{
+.Navbar_routes_div div:hover{
  background-color: rgb(194, 193, 193);
-} */
+}
 
 .Navbar_routes_div i{
     font-size: 25px;

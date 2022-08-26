@@ -1,4 +1,5 @@
 
+import { Box } from '@chakra-ui/react'
 import React from 'react'
 import '../Styles/Navbar.css'
 import Darkmode from './Darkmode'
@@ -7,6 +8,7 @@ const Navbar = () => {
   // # opposite-beginner-5472
   return (
     <div>
+      <Box>
         <div className='Navbar_main_container'>
             <div className='Navbar_logo_div'>
                  <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg" alt="brand_logo" />
@@ -23,14 +25,10 @@ const Navbar = () => {
                 <div className='signin_div'>
                     <h4>Sign in</h4>
                 </div>
-                <div>
-                <i class="fa-solid fa-cart-arrow-down"></i><h4>Baskets</h4>
-                </div>
-                <div>
-                  <Darkmode/>
-                </div>
+                  <Darkmode border='0px'/>
             </div>
         </div>
+        </Box>
     </div>
   )
 }

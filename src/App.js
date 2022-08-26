@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <ScrollTop/>
        <AllRoutes/>
+       <ScrollTop/>
       <Footer/>
     </div>
   );
