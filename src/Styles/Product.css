@@ -6,6 +6,11 @@
 }
 .Product_left_banner{
     width: 25%;
+    text-align: left;
+}
+.Product_left_banner h1{
+    font-size: 20px;
+    font-weight: 400;
 }
 .Product_right{
     width: 75%;

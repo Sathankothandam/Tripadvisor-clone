@@ -1,9 +1,14 @@
-import { Button, Flex, FormLabel, Input } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import { Button, Flex, FormLabel, Input, Stack, Text } from '@chakra-ui/react';
+import { Spinner } from '@chakra-ui/react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../Styles/Product.css'
 import getValue from '../Components/api'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../Context/AppContext'
 const Products = () => {
+  const {location} = useContext(AuthContext);
+//  const locations = JSON.parse(localStorage.getItem("location") || "[]")
+//  console.log(locations[0].location)
   const [data , setData] = useState([])
   const [page, setPage] = useState(1)
   const [sort , setSort] = useState("DESC")
@@ -30,29 +35,39 @@ const Products = () => {
               setLoading(false)
              })
       }
-      console.log(data)
+      // useEffect(()=>{
+      //   localStorage.setItem("location", JSON.stringify(location))
+      // },[location])
   
   return (
     <div>
       <div style={{ width: "100%", height: "100px" }}> </div>
-      <div>{loading && <h3 style={{ fontSize: "2rem" }}>Loading...</h3>}</div>
+      <div>{loading &&
+            <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='blue.500'
+            size='xl'/>
+            }</div>
       <div className='Product_main'>
         <div className='Product_left_banner'>
+            <h1>Location: {location[0].location} </h1>
            <img src="https://s3.envato.com/files/306928834/JPG/300x600.jpg" alt="" />
         </div>
         <div className='Product_right'>
            <div className='Sorting_div'>
                  <div>
-                   <Button onClick={()=>{
+                   <Button bg='red.400' onClick={()=>{
                      setSort(sort==="ASC" ? "DESC" : "ASC")
-                   }}>Sort Price: {sort==="ASC" ? "Low To High" : "High To Low"}</Button>
+                   }}>Sort Price: {sort==="ASC" ? "High To Low" : "Low To High"}</Button>
                  </div>
                  <div>
-                 <Button disabled={page===1} onClick={()=>{
+                 <Button bg='green.400' disabled={page===1} onClick={()=>{
                   setPage(page - 1)
                  }}>Prev</Button>
-                 <Button>{page}</Button>
-                 <Button disabled={page===3} onClick={()=>{
+                 <Button bg='green.400'>{page}</Button>
+                 <Button bg='green.400' disabled={page===3} onClick={()=>{
                   setPage(page + 1)
                  }}>Next</Button>   
                  </div>
@@ -96,7 +111,7 @@ const Products = () => {
                             size="small"
                             type="datetime-local"/>
                              </Flex>
-                             <Button mt='30px' bg='yellow.300' onClick={()=>{
+                             <Button mt='30px' bg='yellow.400' onClick={()=>{
                               navigate(`/products/${items.id}`)
                              }}>View Details</Button>
                            </div>

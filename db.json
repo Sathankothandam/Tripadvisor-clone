@@ -150,5 +150,23 @@
       "image": "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/0e/5b/39/b4.jpg",
       "price": "1583"
     }
+  ],
+  "users": [
+    {
+      "firstname": "mugil",
+      "lastname": "arasan",
+      "email": "mugil@gmail",
+      "mobile": "123455",
+      "password": "Mugill@1",
+      "id": 1
+    },
+    {
+      "firstname": "Sathan",
+      "lastname": "Kumar",
+      "email": "sathan@gmail.com",
+      "mobile": "23456",
+      "password": "Sathan@1995",
+      "id": 2
+    }
   ]
 }
