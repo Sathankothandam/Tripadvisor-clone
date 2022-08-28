@@ -1,4 +1,4 @@
-import { Button, Flex, FormLabel, Input, Stack, Text } from '@chakra-ui/react';
+import { Alert, AlertIcon, Button, Flex, FormLabel, Input } from '@chakra-ui/react';
 import { Spinner } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import '../Styles/Product.css'
@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Context/AppContext'
 const Products = () => {
   const {location} = useContext(AuthContext);
-//  const locations = JSON.parse(localStorage.getItem("location") || "[]")
-//  console.log(locations[0].location)
   const [data , setData] = useState([])
   const [page, setPage] = useState(1)
   const [sort , setSort] = useState("DESC")
@@ -35,9 +33,7 @@ const Products = () => {
               setLoading(false)
              })
       }
-      // useEffect(()=>{
-      //   localStorage.setItem("location", JSON.stringify(location))
-      // },[location])
+
   
   return (
     <div>
@@ -50,9 +46,10 @@ const Products = () => {
             color='blue.500'
             size='xl'/>
             }</div>
+            {location.length > 0 ?
       <div className='Product_main'>
         <div className='Product_left_banner'>
-            <h1>Location: {location[0].location} </h1>
+           <h1>Location: {location[0].location} </h1> 
            <img src="https://s3.envato.com/files/306928834/JPG/300x600.jpg" alt="" />
         </div>
         <div className='Product_right'>
@@ -122,7 +119,10 @@ const Products = () => {
                 )
                })}
         </div>
-      </div>
+      </div> :   <Alert status='warning'  w='50%' m='auto' mt='100px' mb='100px'>
+              <AlertIcon />
+              Seems your were not mention the location where you want to go , update now
+            </Alert>}
     </div>
   )
 }

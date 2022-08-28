@@ -12,6 +12,8 @@ const AppContext = ({children}) => {
     const [location , setLocation] = useState([])
     const [entered, setEntered] = useState(false)
     const [ alert, setAlert] = useState(false)
+    const [isAuth, setIsAuth] = useState(false)
+    const [otp, setOtp] =  useState(false)
     const navigate = useNavigate()
 
     function handleChange(e){
@@ -27,7 +29,13 @@ const AppContext = ({children}) => {
           }])
           setText("");
           setAlert(false)
-          navigate('/products')
+          if(isAuth){
+            navigate('/products')
+          }
+          else{
+            navigate('/signin')
+          }
+          // navigate('/products')
           }
           else{
             setAlert(true)
@@ -41,7 +49,7 @@ const AppContext = ({children}) => {
     //   },[location])
 
   return (
-    <AuthContext.Provider value={{location,setLocation, text, handleChange, handleEnter,entered,alert}}>
+    <AuthContext.Provider value={{location,setLocation, text, handleChange, handleEnter,entered,alert,isAuth,setIsAuth,otp}}>
       {children}
     </AuthContext.Provider>
   )

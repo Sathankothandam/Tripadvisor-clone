@@ -1,13 +1,14 @@
 
 import { Box } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../Context/AppContext'
 import '../Styles/Navbar.css'
 import Darkmode from './Darkmode'
 
 const Navbar = () => {
   // # opposite-beginner-5472
-
+  const { isAuth, setIsAuth } = useContext(AuthContext);
   const navigate = useNavigate()
   return (
     <div>
@@ -25,10 +26,11 @@ const Navbar = () => {
                    <i class="fa-regular fa-heart"></i>
                    <h4>Trip</h4>
                 </div>
-                <div className='signin_div' onClick={()=>{
+                <div style={{backgroundColor:"black", color:"white", cursor:"pointer"}} className='signin_div' onClick={()=>{
+                  setIsAuth( isAuth ? !isAuth : isAuth)
                   navigate('/signin')
                 }}>
-                    <h4>Sign in</h4>
+                    {!isAuth ? <h4>Sign in</h4> : <h4>Logout</h4>}
                 </div>
                   <Darkmode border='0px'/>
             </div>
