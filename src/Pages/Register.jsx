@@ -23,7 +23,7 @@ const Register = () => {
 });
 
 const formSubmitter = e => {
-  axios.post("https://boiling-brushlands-36073.herokuapp.com/users", formData)
+  axios.post("http://localhost:8080/users", formData)
     .then(()=>{
         setFormData({
           id: "",
@@ -76,7 +76,7 @@ useEffect(()=>{
 }, []);
 
 const getData = ()=>{
-    axios.get("https://boiling-brushlands-36073.herokuapp.com/users")
+    axios.get("http://localhost:8080/users")
     .then((res)=>{
         setData(res.data)
     })

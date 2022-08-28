@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import '../Styles/Login.css'
 import axios from "axios";
 import { emailValidator, passwordValidator } from "./validate";
+import { AuthContext } from "../Context/AppContext";
 // import { useDispatch } from "react-redux";
 const Login = () => {
-
+  const { setIsAuth } = useContext(AuthContext);
   const[user, setUser] = useState([])
   const navigate = useNavigate()
 
@@ -43,7 +44,8 @@ useEffect(()=>{
         if(input.email !== e.email || input.password !== e.password){
           return seterrorMessage('Invalid email or password');
         }else{
-          navigate('/');
+          setIsAuth(true)
+          navigate('/products');
           localStorage.setItem('auth', true)
         }
     })

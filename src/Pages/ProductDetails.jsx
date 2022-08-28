@@ -1,9 +1,28 @@
-import { Button, Flex, FormLabel, Input } from '@chakra-ui/react'
+import { Button, Flex, FormLabel, Input, useDisclosure } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import '../Styles/ProductDetails.css'
-const ProductDetails = () => {
 
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
+
+import { PinInput, PinInputField } from '@chakra-ui/react'
+
+import { useToast } from '@chakra-ui/react'
+
+
+const ProductDetails = () => {
+  const [sendOtp, setSendOtp] = useState(false)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const toast = useToast()
+  const finalRef = React.useRef(null)
     const [data,setData] = useState({});
     const param = useParams();
     const navigate = useNavigate()
@@ -19,6 +38,62 @@ const ProductDetails = () => {
   return (
     <div>
         <div style={{ width: "100%", height: "100px" }}> </div>
+         <div className='pop2'>
+         <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Card details</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Input mt='15px' type='number' placeholder='Enter 16 digit card number...'/>
+            <Input mt='15px' type='number'placeholder='Enter date.'/>
+            <Input mt='15px' type='number' placeholder='Enter CVV'/>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue'
+        onClick={() => {
+          setSendOtp(true)
+        toast({
+          title: 'OTP',
+          description: "has been send to your mobile number.",
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        })
+        }} >Send OTP</Button>
+          </ModalFooter>
+          {sendOtp &&
+          <>
+          <ModalHeader>OTP</ModalHeader>
+          <ModalBody>
+           <PinInput otp>
+             <PinInputField />
+              <PinInputField />
+              <PinInputField />
+              <PinInputField />
+            </PinInput>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue'
+                    onClick={() => {
+                      navigate('/')
+                      toast({
+                        title: 'Booked Succesfully',
+                        description: "You can checkin on the time",
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true,
+                      })
+                    }
+                      
+                    }>Pay</Button>
+          </ModalFooter>
+          </> }
+        </ModalContent>
+        </Modal>
+         </div>
         <div className='Details_main'>
              <div className='Details_up_div'>
                    <div className='Details_img_div'>
@@ -27,7 +102,7 @@ const ProductDetails = () => {
                    <div className='Details_price_div'>
                         <div>
                         <Flex mt='20px'>
-                               <FormLabel ml='5px'>from</FormLabel>
+                              <FormLabel ml='5px'>from</FormLabel>
                              <Input
                             placeholder="checkin"
                             size="small"
@@ -42,7 +117,8 @@ const ProductDetails = () => {
                         <div className='price_and_details'>
                             <p>From</p>
                             <p style={{fontSize:"20px", fontWeight:"bold"}}>₹{data.price}<span style={{fontSize:"15px", fontWeight:"normal"}}>/Night</span></p>
-                            <Button mt='30px' bg='yellow.500' w='85%'>Book Now</Button>
+                            <Button mt='30px' bg='yellow.500' w='85%'
+                            onClick={onOpen}>Book Now</Button>
                             <Button mt='30px'  w='85%' onClick={()=>{
                                 navigate('/')
                             }}>Send Message</Button>
